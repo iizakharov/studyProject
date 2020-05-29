@@ -1,0 +1,6 @@
+/.idea/
+/django_env/
+/__pycache__/
+.sqlite3
+*.pyc
+mainapp/migrations/0001_initial.py
