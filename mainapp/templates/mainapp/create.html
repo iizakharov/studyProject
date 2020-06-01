@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-	<form class="form-group" action="{% url 'mainapp:main' %}" method="post" enctype="multipart/form-data">
+	<form class="form-group" action="{% url 'mainapp:create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <br>

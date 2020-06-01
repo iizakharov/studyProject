@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from mainapp.forms import ProductForm
@@ -15,10 +16,17 @@ def main(request):
 
 
 def create(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = ProductForm()
 
     content = {
         'title': 'Добавление товара',
-        'form': ProductForm,
+        'form': form,
     }
 
     return render(request, 'mainapp/create.html', content)

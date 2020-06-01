@@ -1,12 +1,25 @@
 * {
     margin: 0, auto;
-    padding: 0;
+    padding: 2px;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  color: #333;
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -305,6 +318,19 @@ textarea.input {
 .header-links li i {
   color: #D10024;
   margin-right: 5px;
+}
+
+table {
+    width: 80%;
+    margin-bottom: 50px;
+}
+
+table img {
+    height: 150px;
+}
+
+.form-group {
+    max-width: 700px;
 }
 
 /*=========================================================
