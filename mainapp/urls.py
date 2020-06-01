@@ -4,6 +4,7 @@ import mainapp.views as mainapp
 app_name = 'mainapp'
 
 urlpatterns = [
-    path('', mainapp.main, name='main')
+    path('', mainapp.main, name='main'),
+    path('add/', mainapp.create, name='create')
 ]
 
