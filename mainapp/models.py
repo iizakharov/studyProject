@@ -25,6 +25,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(verbose_name='Дата добавления',
                                       auto_created=True, auto_now_add=True)
     name = models.CharField(verbose_name='Название', max_length=255)
+    date = models.DateField(verbose_name='дата поступления')
     price = models.PositiveIntegerField(verbose_name='Цена', default=0)
     image = models.ImageField(upload_to='products_images', blank=True,
                               verbose_name='Изображение')

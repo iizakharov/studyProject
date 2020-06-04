@@ -8,19 +8,10 @@
 			MyShop / {{ title|default:"страница"|title }}
 		</title>
 		{% endblock %}
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		{% block css %}
- 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
- 		<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
- 		<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
  		<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"/>
 		{% endblock %}
-
-		{% block js %}
-
-		{% endblock %}
-
     </head>
 	<body>
 		{% block menu %}
@@ -37,8 +28,59 @@
 		</footer>
 		{% endblock %}
 
+		{% block js %}
+		<script>
+			$(function () {
+
+			  /* Код функций */
+
+			  var loadForm = function () {
+				var btn = $(this);
+				$.ajax({
+				  url: btn.attr("data-url"),
+				  type: 'get',
+				  dataType: 'json',
+				  beforeSend: function () {
+					$("#modal-good").modal("show");
+				  },
+				  success: function (data) {
+					$("#modal-good .modal-content").html(data.html_form);
+				  }
+				});
+			  };
+
+			  var saveForm = function () {
+				var form = $(this);
+				$.ajax({
+				  url: form.attr("action"),
+				  data: form.serialize(),
+				  type: form.attr("method"),
+				  dataType: 'json',
+				  success: function (data) {
+					if (data.form_is_valid) {
+					  $("#good-table tbody").html(data.html_good_list);
+					  $("#modal-good").modal("hide");
+					}
+					else {
+					  $("#modal-good .modal-content").html(data.html_form);
+					}
+				  }
+				});
+				return false;
+			  };
+
+			  /* Подключение функций */
+
+			  $(".js-create-good").click(loadForm);
+			  $("#modal-good").on("submit", ".js-good-create-form", saveForm);
+
+			});
+		{% endblock %}
+		</script>
+
 		<!-- jQuery Plugins -->
 		{% block jquery %}
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

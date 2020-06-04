@@ -1,0 +1,10 @@
+<tr>
+  <th>Изображение</th><th>Название</th><th>Цена</th>
+</tr>
+{% for product in products %}
+  <tr>
+      <td><img src="{{ product.image.url }}" alt="{{ product.name }}"></td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }} руб.</td>
+  </tr>
+{% endfor %}
