@@ -27,8 +27,8 @@ class Product(models.Model):
     name = models.CharField(verbose_name='Название', max_length=255)
     date = models.DateField(verbose_name='дата поступления')
     price = models.PositiveIntegerField(verbose_name='Цена', default=0)
-    image = models.ImageField(upload_to='products_images', blank=True,
-                              verbose_name='Изображение')
+    # image = models.ImageField(upload_to='products_images', blank=True,
+    #                           verbose_name='Изображение')
     unit = models.CharField(verbose_name='Единица измерения', max_length=2,
                             choices=UNIT_CHOICES)
     vendor = models.CharField(verbose_name='Поставщик', max_length=255)

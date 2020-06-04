@@ -2,17 +2,9 @@
 {% load static %}
 
 {% block content %}
-	<form class="form-group js-good-create-form" action="{% url 'mainapp:create' %}" method="post" enctype="multipart/form-data">
+	<form class="form-group" action="{% url 'mainapp:create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="modal-body">
-            {% include 'mainapp/includes/form.html' %}
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-            <button type="submit" class="btn btn-primary">Добавить товар</button>
-        </div>
-<!--        <button type="submit" class="btn btn-primary mb-2">Добавить товар</button>-->
-<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>-->
-<!--        <button type="button" class="btn btn-primary" id="add-button">Добавить</button>-->
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mb-2">Добавить товар</button>
     </form>
 {% endblock %}
